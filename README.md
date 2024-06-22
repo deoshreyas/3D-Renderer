@@ -26,7 +26,9 @@ b_y = s_z*a_z + c_z
 
 Here *s* is an abitrary scale factor and *c* is an arbitrary offset to better align everything to the viewport. The equations then become, using matrix multiplication:
 
-$\begin{bmatrix} b_x \\\ b_y \end{bmatrix} = \begin{bmatrix} s_x \ 0 \ 0 \\\ 0 \ 0 \ s_z \end{bmatrix} \begin{bmatrix} a_x \\\ a_y \\\ a_z \end{bmatrix} + \begin{bmatrix} c_x \\\ c_z \end{bmatrix}$
+```math
+\begin{bmatrix} b_x \\\ b_y \end{bmatrix} = \begin{bmatrix} s_x \ 0 \ 0 \\\ 0 \ 0 \ s_z \end{bmatrix} \begin{bmatrix} a_x \\\ a_y \\\ a_z \end{bmatrix} + \begin{bmatrix} c_x \\\ c_z \end{bmatrix}
+```
 
 ### How to implement perspective estimation?
 
