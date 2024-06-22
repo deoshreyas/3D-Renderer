@@ -31,3 +31,23 @@ void Renderer3D::render() {
     DeltaTime = duration.count();
     time1 = time2;
 } 
+
+Point3D Renderer3D::rotateX(Point3D vertex) {
+    Point3D returnPoint;
+    returnPoint.x = vertex.x;
+    returnPoint.y = cos(rotation) * vertex.y - sin(rotation) * vertex.z;
+    returnPoint.z = sin(rotation) * vertex.y + cos(rotation) * vertex.z;
+    return returnPoint;
+}
+
+Point3D Renderer3D::rotateY(Point3D vertex) {
+    Point3D returnPoint;
+    returnPoint.x = cos(rotation) * vertex.x - sin(rotation) * vertex.z;
+    returnPoint.y = vertex.y;
+    returnPoint.z = sin(rotation) * vertex.x + cos(rotation) * vertex.z;
+    return returnPoint;
+}
+
+Point2D Renderer3D::projection(Point3D vertex) {
+    return Point2D{WindowSizeX / 2 + (vertex.x * FOV) / (FOV + vertex.z) * 100, WindowSizeY / 2 + (vertex.y * FOV) / (FOV + vertex.z) * 100};
+}

@@ -19,16 +19,21 @@ A big limitation of Orthographic (and other types of Parallel Projections) is th
 ### How do I do this in my program?
 First, we project a 3D point $(a_x, a_y, a_z)$ onto a 2D point $(b_x, b_y)$ using the following equations:
 
-$b_x = s_x*a_x + c_x$
-$b_y = s_z*a_z + c_z$
+```math
+b_x = s_x*a_x + c_x
+b_y = s_z*a_z + c_z
+```
 
 Here *s* is an abitrary scale factor and *c* is an arbitrary offset to better align everything to the viewport. The equations then become, using matrix multiplication:
 
-![Matrix Multiplication](https://wikimedia.org/api/rest_v1/media/math/render/svg/7aed406cbf214a05a044ffc28f4e4549e137b928)
+$\begin{bmatrix} b_x \\\ b_y \end{bmatrix} = \begin{bmatrix} s_x \ 0 \ 0 \\\ 0 \ 0 \ s_z \end{bmatrix} \begin{bmatrix} a_x \\\ a_y \\\ a_z \end{bmatrix} + \begin{bmatrix} c_x \\\ c_z \end{bmatrix}$
 
 ### How to implement perspective estimation?
-$b_x = (a_x*FOV)/(a_z+FOV)$
-$b_y = (a_y*FOV)/(a_z+FOV)$
+
+```math
+b_x = (a_x*FOV)/(a_z+FOV)
+b_y = (a_y*FOV)/(a_z+FOV)
+```
 
 Here $FOV$ is just the distance between the screen and our arbitrary camera.
 
